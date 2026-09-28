@@ -22,7 +22,7 @@ function renderWithProviders(children) {
         root.render(
             <React.StrictMode>
                 <ChakraProvider theme={chakraTheme}>
-                    <BrowserRouter>{children}</BrowserRouter>
+                    <BrowserRouter basename="/a2z-dsa-tracker-v3">{children}</BrowserRouter>
                 </ChakraProvider>
             </React.StrictMode>
         )
