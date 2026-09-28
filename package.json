@@ -1,0 +1,46 @@
+{
+    "name": "a2z-tracker-v3",
+    "private": true,
+    "version": "3.0.0",
+    "type": "module",
+    "scripts": {
+        "dev": "vite --port 3000",
+        "build": "vite build",
+        "preview": "vite preview",
+        "validate:data": "node scripts/validate-data.mjs",
+        "validate:difficulty": "node scripts/validate-difficulty.mjs",
+        "validate:planner": "node scripts/validate-planner.mjs",
+        "validate:search": "node scripts/validate-search.mjs",
+        "validate:storage": "node scripts/validate-storage.mjs",
+        "lint": "eslint --fix",
+        "prepare": "husky install"
+    },
+    "dependencies": {
+        "@chakra-ui/icons": "^2.2.4",
+        "@chakra-ui/react": "^2.10.9",
+        "@emotion/react": "11.14.0",
+        "@emotion/styled": "11.14.1",
+        "framer-motion": "12.23.25",
+        "husky": "^9.1.7",
+        "react": "^19.2.1",
+        "react-dom": "^19.2.1",
+        "react-router-dom": "^7.10.1"
+    },
+    "devDependencies": {
+        "@types/react": "^19.2.7",
+        "@types/react-dom": "^19.2.3",
+        "@vitejs/plugin-react": "^5.1.1",
+        "eslint": "^9.39.1",
+        "eslint-config-prettier": "^10.1.8",
+        "eslint-plugin-import": "^2.32.0",
+        "eslint-plugin-jsx-a11y": "^6.10.2",
+        "eslint-plugin-prettier": "^5.5.4",
+        "eslint-plugin-react": "^7.37.5",
+        "eslint-plugin-react-hooks": "^7.0.1",
+        "eslint-plugin-simple-import-sort": "^12.1.1",
+        "eslint-plugin-sonarjs": "^3.0.5",
+        "lint-staged": "^16.2.7",
+        "prettier": "^3.7.4",
+        "vite": "^7.2.6"
+    }
+}
