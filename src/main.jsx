@@ -8,16 +8,31 @@ import chakraTheme from './chakraTheme.js'
 import ultimateData from './components/common/enhancedData.js'
 import { initializeAppStorage } from './components/storage/index.js'
 
-const root = ReactDOM.createRoot(document.getElementById('root'))
+const rootElement = document.getElementById('root')
+if (!rootElement) {
+    console.error('Root element not found!')
+    document.body.innerHTML = '<div style="padding: 20px; color: red;">Error: Root element not found</div>'
+    throw new Error('Root element not found')
+}
 
-const renderWithProviders = children =>
-    root.render(
-        <React.StrictMode>
-            <ChakraProvider theme={chakraTheme}>
-                <BrowserRouter>{children}</BrowserRouter>
-            </ChakraProvider>
-        </React.StrictMode>
-    )
+const root = ReactDOM.createRoot(rootElement)
+
+function renderWithProviders(children) {
+    try {
+        root.render(
+            <React.StrictMode>
+                <ChakraProvider theme={chakraTheme}>
+                    <BrowserRouter>{children}</BrowserRouter>
+                </ChakraProvider>
+            </React.StrictMode>
+        )
+    } catch (err) {
+        console.error('Render error:', err)
+        rootElement.innerHTML = `<div style="padding: 20px; color: red;">Render error: ${err.message}</div>`
+    }
+}
+
+console.log('App starting...')
 
 renderWithProviders(
     <Flex
@@ -33,8 +48,11 @@ renderWithProviders(
     </Flex>
 )
 
+console.log('Loading spinner rendered, initializing storage...')
+
 initializeAppStorage(ultimateData)
     .then(storage => {
+        console.log('Storage initialized:', storage.mode, storage.source)
         renderWithProviders(
             <App
                 fetchData={storage.tracker}
